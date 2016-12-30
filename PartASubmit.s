@@ -1,3 +1,9 @@
+;		TESTCODE:::: CURRENTLY 161 cycles
+;		MOV		R0, #0xFFFFFFF
+;		MOV		R1, #0b01011101
+;		BL		MUL24X24
+;		END
+		
 MUL24X24
 		STMED	R13!,{R4-R12,LR}
 		MOV		R4,#0x1 ;This is to be used as the AND mask for R2
