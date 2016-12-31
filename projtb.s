@@ -57,16 +57,15 @@ PROJTBDATA15	DCD		0x103D62, 0x4380C7, 0x3BF6B72E, 0x448
 			
 			
 MUL24X24		STMED	R13!,{R0,R1,R4-R12,LR}
-			MOV		R4,#0x0 ;A zero
-			MOV		R8,#0x0 ;Second part of R0
+			MOV		R8,#0x0 ;Counter
 			MOV		R2,#0x0 ;Initialise the sum to 0
 			MOV		R3,#0x0
-LOOP			ANDS		R7,R1,#1 ;R7 holds the ANDed values
-			BEQ		SKPADD ;If zero then skip adding
-			ADDS		R2,R2,R0
-			ADC		R3,R3,R8
-SKPADD		LSLS		R0,R0,#1 ;The first part
-			ADC		R8,R4,R8, LSL #1 ;R8 is a left cont. of R2
+LOOP			ANDS		R7,R1,#1 ;R7 is -1 if first bit of R1 is 1
+			BEQ		SKIP
+			RSB		R6,R8,#32
+			ADDS		R2,R2,R0, LSL R8
+			ADC		R3,R3,R0, LSR R6 ;Add with a carry if carry set
+SKIP			ADD		R8,R8,#1
 			LSRS		R1,R1,#1
 			BNE		LOOP
 			LDMED	R13!,{R0,R1,R4-R12,LR}
