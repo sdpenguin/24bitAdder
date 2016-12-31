@@ -1,3 +1,8 @@
+		MOV		R0,#1
+		MOV		R1,#2
+		BL		MUL24X24
+		END
+		
 MUL24X24	STMED	R13!,{R4-R12,LR}
 		MOV		R4,#0x1 ;This is to be used as the AND mask for R2
 		MOV		R5,#0x0 ;The amount of shift
