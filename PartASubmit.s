@@ -1,6 +1,6 @@
-MUL24X24	STMED	R13!,{R0,R1,R4-R12,LR}
-		MOV		R4,#0 ;continuation of R0
-		MOV		R2,#0x0 ;Initialise the sum to 0
+MUL24X24	STMED	R13!,{R0,R1,R4,R5,LR}
+		MOV		R4,#0
+		MOV		R2,#0x0
 		MOV		R3,#0x0
 		LSRS		R1,R1,#1
 		BCC		LOOP
@@ -11,5 +11,4 @@ LOOP		LSRS		R1,R1,#1
 		ADD		R4,R4,#1
 		BCS		ADDER
 		BNE		LOOP
-		LDMED	R13!,{R0,R1,R4-R12,LR}
-		MOV		PC,LR
+		LDMED	R13!,{R0,R1,R4,R5,PC}

@@ -56,7 +56,7 @@ PROJTBDATA15	DCD		0x103D62, 0x4380C7, 0x3BF6B72E, 0x448
 			;------------------------------------------------------------------------------------------------
 			
 			
-MUL24X24		STMED	R13!,{R0,R1,R4-R12,LR}
+MUL24X24		STMED	R13!,{R0,R1,R4,R5,LR}
 			MOV		R4,#0 ;continuation of R0
 			MOV		R2,#0x0 ;Initialise the sum to 0
 			MOV		R3,#0x0
@@ -69,8 +69,7 @@ LOOP			LSRS		R1,R1,#1
 			ADD		R4,R4,#1
 			BCS		ADDER
 			BNE		LOOP
-			LDMED	R13!,{R0,R1,R4-R12,LR}
-			MOV		PC,LR
+			LDMED	R13!,{R0,R1,R4,R5,PC}
 			
 			;TODO:	Need to fix it for filling into R2 and R3
 			;TODO:	Need to check no. of instructions and optimise
