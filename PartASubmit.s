@@ -1,5 +1,5 @@
 		MOV		R0,#1
-		MOV		R1,#0xFFFFFFFF
+		MOV		R1,#0x000000FF
 		BL		MUL24X24
 		END
 		
