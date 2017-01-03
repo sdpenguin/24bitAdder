@@ -57,8 +57,8 @@ PROJTBDATA15	DCD		0x103D62, 0x4380C7, 0x3BF6B72E, 0x448
 			
 			
 MUL24X24		STMED	R13!,{R0,R1,R4,R5,LR}
-			MOV		R4,#0 ;continuation of R0
-			MOV		R2,#0x0 ;Initialise the sum to 0
+			MOV		R4,#0
+			MOV		R2,#0x0
 			MOV		R3,#0x0
 			LSRS		R1,R1,#1
 			BCC		LOOP
@@ -67,7 +67,7 @@ ADDER		RSB		R5,R4,#32
 			ADC		R3,R3,R0,LSR R5
 LOOP			LSRS		R1,R1,#1
 			ADD		R4,R4,#1
-			BCS		ADDER
+			BLCS		ADDER
 			BNE		LOOP
 			LDMED	R13!,{R0,R1,R4,R5,PC}
 			
